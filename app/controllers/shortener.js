@@ -43,26 +43,6 @@ var shortener = {
 };
 
 module.exports = shortener;
-/*
-
-        return urlPromise.then( function(uriObject) {
-    		// if no record in db, add new one
-    		if (uriObject === null) {
-    			var newUri = new Url({"long_url": uri});
-    			return newUri.save().then(function(savedUri){
-    				return {
-    					original_url: savedUri.long_url,
-    					short_url: savedUri.short_url
-    				};
-    			});
-    		} else {
-    			return {
-    				original_url: uriObject.long_url,
-    				short_url: uriObject.short_url
-    			};
-    		}
-    	});
-*/
 
 
 
