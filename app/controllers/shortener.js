@@ -24,6 +24,28 @@ var shortener = {
     	var urlPromise = Url.findOne({"long_url": uri}).exec();
     	
     	return urlPromise.then( function(uriObject) {
+    	    // if no record in db, add new one
+        	if (uriObject === null) {
+        		var newUri = new Url({"long_url": uri});
+        		return newUri.save();
+        	} else {
+        	    return uriObject;
+            }}).then( function(uriObject) {
+        	    return {
+        			original_url: uriObject.long_url,
+        			short_url: uriObject.short_url
+        		};
+            }).catch(function(err) {
+                console.log(err);
+            }
+        );
+    }
+};
+
+module.exports = shortener;
+/*
+
+        return urlPromise.then( function(uriObject) {
     		// if no record in db, add new one
     		if (uriObject === null) {
     			var newUri = new Url({"long_url": uri});
@@ -40,14 +62,7 @@ var shortener = {
     			};
     		}
     	});
-    }
-};
-
-module.exports = shortener;
-
-
-
-
+*/
 
 
 

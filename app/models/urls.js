@@ -2,7 +2,6 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    //AutoIncrement = require('mongoose-sequence/index');
     AutoIncrement = require('mongoose-auto-increment');
 
 AutoIncrement.initialize(mongoose.connection);
@@ -12,7 +11,6 @@ var UrlSchema = new Schema({
 });
 
 // shortUrl will be added and automatically incremented
-//UrlSchema.plugin(AutoIncrement, {id: "urlcounter", inc_field: 'shortUrl'});
 UrlSchema.plugin(AutoIncrement.plugin, { model: "Url", field: "short_url"});
 
 var Url = mongoose.model('Url', UrlSchema);
